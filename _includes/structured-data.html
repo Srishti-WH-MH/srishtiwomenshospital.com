@@ -1,12 +1,16 @@
 {%- comment -%}
-  MedicalClinic schema. States only what the site itself claims — opening hours
-  are the OPD hours; the 24/7 line covers maternity emergencies only, so it is
-  not asserted as general opening hours.
+  Hospital schema — NOT MedicalClinic. Srishti is a hospital, and this is the
+  machine-readable claim search engines act on; the brand foundation is explicit
+  that it must not be presented as a clinic.
+
+  States only what the site itself claims — opening hours are the OPD hours; the
+  24/7 line covers maternity emergencies only, so it is not asserted as general
+  opening hours.
 {%- endcomment -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MedicalClinic",
+  "@type": "Hospital",
   "name": {{ site.title | jsonify }},
   "url": {{ site.url | append: site.baseurl | append: '/' | jsonify }},
   "logo": {{ '/assets/img/logo-full.webp' | absolute_url | jsonify }},
