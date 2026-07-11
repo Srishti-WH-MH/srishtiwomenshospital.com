@@ -328,11 +328,30 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 }
 .brand:hover .brand__name { color: var(--srishti-plum-vivid); }
 
-/* On a phone the descriptor would push the bar past the viewport; the mark and
-   wordmark carry the brand, and the hero states the descriptor immediately. */
-@media (max-width: 479px) {
-  .brand__rule,
-  .brand__strap { display: none; }
+/* Phone: the full lockup still fits, but only once it is scaled down — at its
+   desktop size the brand (264px) plus the gap and hamburger overruns a 360px
+   bar. Shrinking the mark, wordmark and tracking keeps all three parts. */
+@media (max-width: 767px) {
+  .sui-nav__inner { gap: var(--space-3); }   /* reclaim room from the flex gap */
+  .brand { gap: var(--space-2); }
+  .brand__logo { gap: 6px; }
+  .brand__mark { height: 38px; }
+  .brand__name { font-size: 1.375rem; }
+  .brand__rule { min-height: 34px; }
+  .brand__strap {
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
+  }
+}
+
+/* Smallest phones (320–379px): trimmed further, or the hamburger wraps onto a
+   second row and the bar doubles in height. */
+@media (max-width: 379px) {
+  .brand__mark { height: 34px; }
+  .brand__name { font-size: 1.1875rem; }
+  .brand__rule { min-height: 30px; }
+  .brand__strap { font-size: 0.5rem; letter-spacing: 0.07em; }
 }
 
 /* ---- Navbar: hamburger below 768px ----------------------------------------
