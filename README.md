@@ -42,11 +42,11 @@ bundle exec jekyll serve      # http://localhost:4000
 
 ## The design system
 
-`assets/ds/_ds_bundle.css` is the compiled **srishti-ui** stylesheet, vendored verbatim. It carries all 47 brand tokens and every `sui-*` component class. **Don't hand-edit it** — page-level styling belongs in `css/site.css`, which uses the tokens (`var(--plum-700)`, `var(--space-5)`) rather than hard-coded values.
+`assets/ds/ds-bundle.css` is the compiled **srishti-ui** stylesheet, vendored verbatim. It carries all 47 brand tokens and every `sui-*` component class. **Don't hand-edit it** — page-level styling belongs in `css/site.css`, which uses the tokens (`var(--plum-700)`, `var(--space-5)`) rather than hard-coded values.
 
 Two conventions worth knowing:
 
-- Jekyll skips underscore-prefixed files, so `_ds_bundle.css` is force-included in `_config.yml`. Remove that line and the site ships unstyled.
+- **Never give a served file a leading underscore.** Jekyll excludes such files from the build, and GitHub Pages does so *silently* — no error, just a missing asset. The bundle ships upstream as `_ds_bundle.css` and is deliberately renamed here; putting the underscore back publishes the site unstyled.
 - `body` needs `margin: 0` (set in `css/site.css`); the design system doesn't reset it, and without it every full-bleed colour band is inset by 8px.
 
 ## SEO

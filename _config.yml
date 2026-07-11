@@ -37,11 +37,11 @@ contact:
 plugins:
   - jekyll-sitemap
 
-# `_ds_bundle.css` is the design system's compiled stylesheet, vendored under its
-# upstream name. Jekyll skips underscore-prefixed files by default, so it must be
-# force-included or the whole site would render unstyled.
-include:
-  - assets/ds/_ds_bundle.css
+# Note: Jekyll excludes underscore-prefixed files from the build. The design
+# system's compiled stylesheet ships upstream as `_ds_bundle.css`; it is vendored
+# here as `ds-bundle.css` for exactly that reason. Do not reintroduce the
+# underscore — GitHub Pages drops such files silently and publishes the site
+# unstyled, with no build error.
 
 exclude:
   - design-source

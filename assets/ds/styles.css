@@ -1,4 +1,8 @@
 /* Single stylesheet entry for the Srishti design system.
-   Link this one file; it pulls in the brand fonts and every sui-* class. */
+   Link this one file; it pulls in the brand fonts and every sui-* class.
+
+   Upstream this bundle is named `_ds_bundle.css`. It is renamed here because
+   Jekyll excludes underscore-prefixed files from the build — GitHub Pages
+   would drop it silently and publish the site unstyled. */
 @import "../fonts/fonts.css";
-@import "./_ds_bundle.css";
+@import "./ds-bundle.css";
