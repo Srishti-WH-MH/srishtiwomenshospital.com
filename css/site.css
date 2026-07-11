@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Page-level layout glue.
+   All values come from design system tokens — no hard-coded brand colours here.
+   Component styling lives in assets/ds/_ds_bundle.css and must not be edited.
+   ========================================================================== */
+
+html { scroll-behavior: smooth; }
+
+/* The design system styles `body` (font, colour, ivory canvas) but does not
+   reset its margin, so the browser's default 8px would inset every full-bleed
+   band and leak the canvas down both edges. Bands must reach the viewport. */
+body { margin: 0; }
+
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Links inherit the brand link colour, except buttons, which style themselves. */
+a:not(.sui-btn) { color: var(--srishti-plum-vivid); }
+a:not(.sui-btn):hover { color: var(--plum-900); }
+
+/* ---- Section shells -------------------------------------------------------
+   .section     — constrained column on the ivory canvas
+   .band        — full-bleed colour band; .band__inner re-constrains the column */
+.section {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-5);
+}
+.band { padding: var(--space-8) var(--space-5); }
+.band__inner { max-width: 1160px; margin: 0 auto; }
+.band--rose { background: var(--rose-50); }
+.band--plum-50 { background: var(--plum-50); }
+.band--cta { background: var(--plum-800); }
+
+.section__intro { max-width: 720px; }
+.section__intro--center { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ---- Emergency strip ------------------------------------------------------ */
+.strip { background: var(--plum-900); padding: var(--space-4) var(--space-5); }
+.strip__inner {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4);
+}
+.strip__copy { display: flex; flex-direction: column; gap: var(--space-1); flex: 1; min-width: 260px; }
+.strip__title { color: var(--srishti-ivory); font-size: 0.9375rem; letter-spacing: 0.02em; }
+.strip__note { color: var(--rose-200); font-size: 0.8125rem; }
+.strip__actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* ---- Card grids ----------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+/* Body of a service card: copy above, "read more" link pinned below it. */
+.card-body { display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+.card-link { font-weight: 600; font-size: 0.875rem; text-decoration: none; }
+.card-link:hover { text-decoration: underline; }
+
+/* ---- Two-column split (doctor, facilities preview) ------------------------ */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: var(--space-7);
+  align-items: center;
+}
+.split--wide { grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); }
+.split__copy { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+.split__copy p { margin: 0; line-height: 1.8; color: var(--neutral-700); }
+.split__copy strong { color: var(--plum-700); }
+
+.tag-row { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+/* The divider's hairlines are flex:1, so it needs an explicit width — the
+   parent's align-items:flex-start would otherwise shrink it to just the dot. */
+.divider--320 { width: 100%; max-width: 320px; margin-inline: auto; }
+
+/* ---- Image slots ----------------------------------------------------------
+   Awaiting real photography. Sized to hold the final image so swapping an <img>
+   in place of .slot does not shift the layout. */
+.slot {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, var(--rose-100) 0%, rgba(246, 232, 232, 0) 60%),
+    var(--plum-50);
+  border: 1px dashed var(--plum-200);
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--space-5);
+}
+.slot__label {
+  font-size: 0.8125rem; color: var(--plum-500);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-align: center; max-width: 22ch; line-height: 1.6;
+}
+/* Heights come from the prototypes, which size each slot to its section. */
+.slot--h320 { height: 320px; }
+.slot--h340 { height: 340px; }
+.slot--h380 { height: 380px; }
+.slot--h400 { height: 400px; }
+.slot--h420 { height: 420px; }
+.slot--h440 { height: 440px; }
+.slot--h460 { height: 460px; }
+/* When a real photo lands, give the <img> the same class to keep the crop. */
+.slot > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Facilities proof-point list ------------------------------------------ */
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-4) var(--space-5);
+}
+.facility { display: flex; flex-direction: column; gap: var(--space-1); }
+.facility h3 { margin: 0; }
+
+/* ---- Closing CTA ---------------------------------------------------------- */
+.cta {
+  max-width: 760px; margin: 0 auto; text-align: center;
+  display: flex; flex-direction: column; gap: var(--space-4); align-items: center;
+}
+.cta .sui-eyebrow { color: var(--rose-200); margin: 0; }
+.cta h2 { margin: 0; color: var(--srishti-ivory); }
+.cta p { margin: 0; color: var(--rose-200); line-height: 1.8; }
+.cta__actions { display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center; }
+.cta__meta { color: var(--rose-200); font-size: 0.8125rem; }
+
+/* ---- Footer link colours (on deep plum) ----------------------------------- */
+.sui-footer a { color: var(--plum-200); }
+.sui-footer a:hover { color: var(--srishti-ivory); }
+
+/* ---- Navbar: hamburger below 900px ----------------------------------------
+   The button only exists for JS users (`html.js`); without JS the links fall
+   back to wrapping onto their own row, so navigation is never unreachable. */
+.nav-toggle { display: none; }
+
+.nav-toggle {
+  width: 44px; height: 44px;              /* 44px — comfortable tap target */
+  align-items: center; justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--plum-200);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.nav-toggle:hover { background: var(--plum-50); }
+
+/* Three bars; the middle one is the element, the outer two its pseudo-elements.
+   They fold into an X when the menu is open. */
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--plum-700);
+  border-radius: 2px;
+}
+.nav-toggle__bars { position: relative; transition: background-color .15s ease; }
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: '';
+  position: absolute; left: 0;
+  transition: transform .18s ease, top .18s ease;
+}
+.nav-toggle__bars::before { top: -6px; }
+.nav-toggle__bars::after  { top: 6px; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { top: 0; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { top: 0; transform: rotate(-45deg); }
+
+/* Tablet (768–900px): the full nav needs ~912px in one row, so the links wrap
+   onto a second row. Every link stays visible — no hamburger at this size. */
+@media (max-width: 900px) {
+  .sui-nav__inner {
+    flex-wrap: wrap;
+    row-gap: 0;
+    min-height: 0;
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+  .sui-nav__links {
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+    column-gap: var(--space-4);
+    width: 100%;
+    order: 3;
+    padding-bottom: var(--space-2);
+  }
+}
+
+/* Phone (≤767px): collapse the links behind the hamburger. Without JS the rules
+   above still apply, so the links remain visible and reachable. */
+@media (max-width: 767px) {
+  .js .nav-toggle { display: inline-flex; margin-left: auto; }
+
+  .js .sui-nav__links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    order: 3;
+    gap: 0;
+    margin: var(--space-3) 0 0;
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--plum-100);
+  }
+  .js .sui-nav__links.is-open { display: flex; }
+  .js .sui-nav__links a {
+    display: block;
+    padding: var(--space-3) 0;             /* generous rows, easy to hit */
+    font-size: 1rem;
+  }
+  .js .sui-nav__links a[aria-current="page"] { color: var(--srishti-plum-vivid); font-weight: 600; }
+
+  /* The CTA moves into the panel rather than crowding the bar on a phone. */
+  .js .sui-nav__cta { display: none; }
+  .js .sui-nav__links.is-open ~ .sui-nav__cta {
+    display: inline-flex;
+    order: 4;
+    width: 100%;
+    margin-bottom: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .sui-nav__links a { font-size: 0.875rem; }
+  .js .sui-nav__links a { font-size: 1rem; }
+}
+
+/* ---- Journey steps (Maternity) --------------------------------------------
+   Numbered white cards on the rose band. Not sui-card: the prototype uses a
+   lighter shadow and no icon well. */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+.journey-step {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.journey-step__num {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 600;
+  color: var(--rose-500); line-height: 1;
+}
+.journey-step h3 { margin: 0; }
+.journey-step p { margin: 0; font-size: 0.875rem; line-height: 1.7; color: var(--neutral-700); }
+
+/* ---- Readiness list (Maternity) ------------------------------------------- */
+.stack { display: flex; flex-direction: column; gap: var(--space-6); }
+.readiness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: var(--space-5);
+}
+.readiness { display: flex; flex-direction: column; gap: 6px; }
+.readiness h3 { margin: 0; }
+
+/* ---- Alternating facility rows (Facilities) -------------------------------
+   Odd rows put the image first, even rows the copy — the DOM order does the
+   alternating, so no order: overrides are needed. */
+.facility-rows { display: flex; flex-direction: column; gap: var(--space-8); }
+.facility-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: var(--space-7);
+  align-items: center;
+}
+.facility-row__copy { display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+.facility-row__copy h2 { margin: 0; }
+.facility-row__copy p { margin: 0; line-height: 1.8; color: var(--neutral-700); }
+
+/* ---- Centred closing block (Facilities) ----------------------------------- */
+.center-block {
+  max-width: 760px; margin: 0 auto; text-align: center;
+  display: flex; flex-direction: column; gap: var(--space-4); align-items: center;
+}
+.center-block h2, .center-block p { margin: 0; }
+
+/* ---- Contact ---------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: var(--space-7);
+  align-items: start;
+}
+.contact-col { display: flex; flex-direction: column; gap: var(--space-6); }
+.contact-find { display: flex; flex-direction: column; gap: var(--space-3); }
+.contact-find h2 { margin: 0; }
+.contact-find p { margin: 0; line-height: 1.8; color: var(--neutral-700); }
+.contact-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: var(--space-5);
+}
+.meta { display: flex; flex-direction: column; gap: 6px; }
+.meta h3 { margin: 0; }
+.meta p { margin: 0; font-size: 0.875rem; line-height: 1.7; color: var(--neutral-700); }
+
+/* Booking card — white surface on the ivory canvas, same idiom as sui-card. */
+.form-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-6);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.form-card__head { display: flex; flex-direction: column; gap: 6px; }
+.form-card__head h2 { margin: 0; }
+.form-card .sui-btn { width: 100%; }
+.form-card__foot { text-align: center; }
+
+/* Utilities used sparingly where a token-only tweak is clearer than a class. */
+.u-mt-3 { margin-top: var(--space-3); }
+.u-mt-4 { margin-top: var(--space-4); }
+.u-mb-0 { margin-bottom: 0; }

@@ -1,0 +1,4 @@
+/* Single stylesheet entry for the Srishti design system.
+   Link this one file; it pulls in the brand fonts and every sui-* class. */
+@import "../fonts/fonts.css";
+@import "./_ds_bundle.css";
