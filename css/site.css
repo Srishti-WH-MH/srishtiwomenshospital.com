@@ -106,7 +106,8 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 /* When a real photo lands, give the <img> the same class to keep the crop. */
 .slot > img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---- Facilities proof-point list ------------------------------------------ */
+/* ---- Facilities proof-point list ------------------------------------------
+   Plain two-column list, used inside the Diagnostics "why it matters" column. */
 .facility-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
@@ -114,6 +115,88 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 }
 .facility { display: flex; flex-direction: column; gap: var(--space-1); }
 .facility h3 { margin: 0; }
+
+/* ---- Facility cards (Home) -------------------------------------------------
+   The facilities are the evidence for "a complete hospital", so they get weight:
+   white cards on the plum band, numbered to match the Facilities page, each one
+   a link into its section there. An explicit 3-column track (rather than
+   auto-fit) keeps them as a balanced 3x2 — auto-fit would leave a 4+2 orphan
+   row at this container width. */
+.facility-cards {
+  list-style: none;
+  margin: var(--space-8) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 600px) {
+  .facility-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .facility-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.facility-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  height: 100%;
+  box-sizing: border-box;
+  padding: var(--space-5);
+  background: #fff;
+  border: 1px solid var(--plum-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+/* Always visible, not hover-only — on touch there is no hover to reveal it, and
+   nothing else says these are links. */
+.facility-card::after {
+  content: '→';
+  position: absolute;
+  right: var(--space-5);
+  bottom: var(--space-4);
+  color: var(--rose-500);
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform .18s ease, color .18s ease;
+}
+.facility-card:hover::after { color: var(--rose-700); transform: translateX(3px); }
+.facility-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--plum-200);
+  transform: translateY(-2px);
+}
+.facility-card__num {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: var(--rose-700);
+}
+.facility-card__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  color: var(--srishti-plum);
+  margin: 0;
+}
+.facility-card__note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--neutral-500);
+  padding-right: var(--space-6);   /* clear of the arrow */
+}
+.facility-card:hover .facility-card__title { color: var(--srishti-plum-vivid); }
+
+@media (prefers-reduced-motion: reduce) {
+  .facility-card { transition: none; }
+  .facility-card:hover { transform: none; }
+}
 
 /* ---- Closing CTA ---------------------------------------------------------- */
 .cta {
@@ -131,7 +214,7 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .sui-footer a:hover { color: var(--srishti-ivory); }
 
 /* ---- Hero photo -----------------------------------------------------------
-   A plum duotone photograph behind the hero. It is decorative — the copy carries
+   A hospital photograph behind the hero. It is decorative — the copy carries
    the message — so it lives in a pseudo-element rather than an <img>, and is
    never announced to screen readers.
 
@@ -164,7 +247,7 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
         rgba(251, 245, 243, 0.86) 56%,
         rgba(251, 245, 243, 0.30) 80%,
         rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-tall-700.webp');
+      url('../assets/img/hero-hospital-tall-700.webp');
     background-position: center bottom;
   }
 }
@@ -177,7 +260,7 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
         rgba(251, 245, 243, 0.86) 56%,
         rgba(251, 245, 243, 0.30) 80%,
         rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-tall-1000.webp');
+      url('../assets/img/hero-hospital-tall-1000.webp');
   }
 }
 
@@ -190,7 +273,7 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
         rgba(251, 245, 243, 0.88) 48%,
         rgba(251, 245, 243, 0.30) 74%,
         rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-wide-1600.webp');
+      url('../assets/img/hero-hospital-wide-1600.webp');
     background-position: center right;
   }
 }
@@ -202,7 +285,7 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
         rgba(251, 245, 243, 0.88) 48%,
         rgba(251, 245, 243, 0.30) 74%,
         rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-wide-2400.webp');
+      url('../assets/img/hero-hospital-wide-2400.webp');
   }
 }
 

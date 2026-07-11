@@ -149,46 +149,73 @@ hero_photo: true
     </div>
   </section>
 
-  <!-- ---- Facilities preview ---------------------------------------------- -->
+  <!-- ---- Facilities preview ----------------------------------------------
+       The facilities are the proof behind "a complete hospital", so they get
+       their own full-width row of cards rather than a list squeezed beside the
+       photo. Numbering matches the Facilities page, and each card links to its
+       section there. -->
   <section class="band band--plum-50" aria-labelledby="facilities-heading">
-    <div class="band__inner split split--wide">
-      <div class="split__copy">
-        <div>
-          <p class="sui-eyebrow sui-eyebrow--rose">Facilities</p>
-          <h2 class="sui-h1 u-mb-0" id="facilities-heading">A complete hospital, prepared for anything</h2>
-          <p class="sui-lead u-mt-4 u-mb-0">Srishti is a neighbourhood hospital with the facilities women's health and maternity care may need — so care never has to move elsewhere.</p>
+    <div class="band__inner">
+
+      <div class="split split--wide">
+        <div class="split__copy">
+          <div>
+            <p class="sui-eyebrow sui-eyebrow--rose">Facilities</p>
+            <h2 class="sui-h1 u-mb-0" id="facilities-heading">A complete hospital, prepared for anything</h2>
+            <p class="sui-lead u-mt-4 u-mb-0">Srishti is a neighbourhood hospital with the facilities women's health and maternity care may need — so care never has to move elsewhere.</p>
+          </div>
+          <a class="sui-btn sui-btn--secondary" href="facilities.html">Explore Facilities</a>
         </div>
-        <div class="facility-grid">
-          <div class="facility">
-            <h3 class="sui-h3">Modular operation theater</h3>
-            <span class="sui-caption">For planned and emergency surgery</span>
-          </div>
-          <div class="facility">
-            <h3 class="sui-h3">Delivery room</h3>
-            <span class="sui-caption">Calm, private, and fully prepared</span>
-          </div>
-          <div class="facility">
-            <h3 class="sui-h3">Surgical ICU</h3>
-            <span class="sui-caption">Close monitoring when it matters</span>
-          </div>
-          <div class="facility">
-            <h3 class="sui-h3">Patient rooms</h3>
-            <span class="sui-caption">Inpatient care with family space</span>
-          </div>
-          <div class="facility">
-            <h3 class="sui-h3">Ultrasound</h3>
-            <span class="sui-caption">Scans read in-house, same visit</span>
-          </div>
-          <div class="facility">
-            <h3 class="sui-h3">Diagnostics and pathology lab</h3>
-            <span class="sui-caption">Tests without a second trip</span>
-          </div>
+        <div class="slot slot--h400" role="img" aria-label="Srishti hospital exterior, Kismatpur">
+          <span class="slot__label">Hospital exterior — Kismatpur</span>
         </div>
-        <a class="sui-btn sui-btn--secondary" href="facilities.html">Explore Facilities</a>
       </div>
-      <div class="slot slot--h440" role="img" aria-label="Srishti hospital exterior, Kismatpur">
-        <span class="slot__label">Hospital exterior — Kismatpur</span>
-      </div>
+
+      <ul class="facility-cards">
+        <li>
+          <a class="facility-card" href="facilities.html#operation-theater">
+            <span class="facility-card__num" aria-hidden="true">01</span>
+            <h3 class="facility-card__title">Modular operation theater</h3>
+            <span class="facility-card__note">For planned and emergency surgery</span>
+          </a>
+        </li>
+        <li>
+          <a class="facility-card" href="facilities.html#delivery-room">
+            <span class="facility-card__num" aria-hidden="true">02</span>
+            <h3 class="facility-card__title">Delivery room</h3>
+            <span class="facility-card__note">Calm, private, and fully prepared</span>
+          </a>
+        </li>
+        <li>
+          <a class="facility-card" href="facilities.html#surgical-icu">
+            <span class="facility-card__num" aria-hidden="true">03</span>
+            <h3 class="facility-card__title">Surgical ICU</h3>
+            <span class="facility-card__note">Close monitoring when it matters</span>
+          </a>
+        </li>
+        <li>
+          <a class="facility-card" href="facilities.html#patient-rooms">
+            <span class="facility-card__num" aria-hidden="true">04</span>
+            <h3 class="facility-card__title">Patient rooms</h3>
+            <span class="facility-card__note">Inpatient care with family space</span>
+          </a>
+        </li>
+        <li>
+          <a class="facility-card" href="facilities.html#ultrasound">
+            <span class="facility-card__num" aria-hidden="true">05</span>
+            <h3 class="facility-card__title">Ultrasound</h3>
+            <span class="facility-card__note">Scans read in-house, same visit</span>
+          </a>
+        </li>
+        <li>
+          <a class="facility-card" href="facilities.html#diagnostics">
+            <span class="facility-card__num" aria-hidden="true">06</span>
+            <h3 class="facility-card__title">Diagnostics and pathology lab</h3>
+            <span class="facility-card__note">Tests without a second trip</span>
+          </a>
+        </li>
+      </ul>
+
     </div>
   </section>
 

@@ -2,19 +2,9 @@
 
 ## Photography
 
-The hero photograph on the home page is by **Darshan Dave**, via Pexels.
-
-- Source: https://www.pexels.com/photo/pregnant-woman-in-traditional-attire-outdoors-35086802/
-- Photographer: https://www.pexels.com/@darshandave/
-- Licence: [Pexels License](https://www.pexels.com/license/) — free for commercial use,
-  attribution not required, modification permitted.
-
-The image has been cropped and rendered as a plum duotone to match the brand palette.
-Credit is given here as a courtesy; the licence does not require it.
-
-The person shown is a stock photography model. She is **not** a patient, a member of
-staff, or otherwise affiliated with Srishti, and must never be presented as one — the
-Pexels licence expressly prohibits implying endorsement by the people depicted.
+The home-page hero is an AI-generated hospital scene created specifically for this
+website. The people shown are fictional and must not be presented as real patients,
+doctors, staff members, or endorsers of Srishti.
 
 ## Design system
 
