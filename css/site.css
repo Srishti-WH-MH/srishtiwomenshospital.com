@@ -235,19 +235,22 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .sui-hero--photo .sui-hero__inner { position: relative; z-index: 1; }
 .sui-hero--photo .sui-hero__mark { display: none; }
 
-/* Phone: copy on ivory, photo fading in beneath it. The extra bottom padding is
-   what gives her room to appear below the buttons. */
+/* Mobile and tablet: keep the copy on its own ivory field, then show a dedicated
+   hospital crop beneath it. Matching the reserved space to the crop's aspect
+   ratio prevents the people and equipment from being hidden behind long copy. */
 @media (max-width: 899px) {
-  .sui-hero--photo { padding-bottom: 280px; }
+  .sui-hero--photo { padding-bottom: min(85.714vw, 720px); }
   .sui-hero--photo::after {
+    top: auto;
+    height: min(85.714vw, 720px);
     background-image:
       linear-gradient(to bottom,
         var(--srishti-ivory) 0%,
-        var(--srishti-ivory) 40%,
-        rgba(251, 245, 243, 0.86) 56%,
-        rgba(251, 245, 243, 0.30) 80%,
-        rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-hospital-tall-700.webp');
+        rgba(251, 245, 243, 0.90) 8%,
+        rgba(251, 245, 243, 0.34) 20%,
+        rgba(251, 245, 243, 0) 32%),
+      url('../assets/img/hero-hospital-mobile-700.webp');
+    background-size: 100% 100%, 100% auto;
     background-position: center bottom;
   }
 }
@@ -256,12 +259,19 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
     background-image:
       linear-gradient(to bottom,
         var(--srishti-ivory) 0%,
-        var(--srishti-ivory) 40%,
-        rgba(251, 245, 243, 0.86) 56%,
-        rgba(251, 245, 243, 0.30) 80%,
-        rgba(251, 245, 243, 0) 100%),
-      url('../assets/img/hero-hospital-tall-1000.webp');
+        rgba(251, 245, 243, 0.90) 8%,
+        rgba(251, 245, 243, 0.34) 20%,
+        rgba(251, 245, 243, 0) 32%),
+      url('../assets/img/hero-hospital-mobile-1000.webp');
   }
+}
+
+/* Phones: the appointment actions and emergency strip are more valuable than a
+   large decorative image. Remove the photo and restore the hero's normal bottom
+   spacing so the emergency information follows the CTAs immediately. */
+@media (max-width: 599px) {
+  .sui-hero--photo { padding-bottom: var(--space-8); }
+  .sui-hero--photo::after { display: none; }
 }
 
 /* Desktop: subject on the right, copy on an ivory field to the left. */
