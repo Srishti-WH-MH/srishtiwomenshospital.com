@@ -140,8 +140,10 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
   gap: var(--space-3);
   text-decoration: none;
 }
+/* Mark + wordmark read as one unit; the descriptor sits beside them, past a
+   hairline rule, so the logo itself stays uncrowded. */
+.brand__logo { display: flex; align-items: center; gap: var(--space-2); }
 .brand__mark { height: 44px; width: auto; display: block; }
-.brand__text { display: flex; flex-direction: column; gap: 3px; }
 .brand__name {
   font-family: var(--font-display);
   font-weight: 700;
@@ -149,27 +151,35 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
   line-height: 1;
   color: var(--plum-700);
 }
+.brand__rule {
+  width: 1px;
+  align-self: stretch;
+  min-height: 40px;
+  background: var(--plum-200);
+  flex: none;
+}
 .brand__strap {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--plum-700);
-  white-space: nowrap;
 }
 .brand:hover .brand__name { color: var(--srishti-plum-vivid); }
 
-/* On a phone the strapline would push the bar past the viewport; the mark and
+/* On a phone the descriptor would push the bar past the viewport; the mark and
    wordmark carry the brand, and the hero states the descriptor immediately. */
 @media (max-width: 479px) {
+  .brand__rule,
   .brand__strap { display: none; }
 }
 
-/* ---- Navbar: hamburger below 900px ----------------------------------------
-   The button only exists for JS users (`html.js`); without JS the links fall
-   back to wrapping onto their own row, so navigation is never unreachable. */
+/* ---- Navbar: hamburger below 768px ----------------------------------------
+   Three modes: one row (>=1100px), links wrapped to a second row (768–1099px),
+   hamburger (<768px). The button only exists for JS users (`html.js`); without
+   JS the links fall back to wrapping, so navigation is never unreachable. */
 .nav-toggle { display: none; }
 
 .nav-toggle {
@@ -207,10 +217,10 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { top: 0; transform: rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { top: 0; transform: rotate(-45deg); }
 
-/* Below 1140px the nav can't hold one row: the brand lockup (312px), links
-   (538px), CTA (189px), gaps and padding need ~1135px. So the links wrap onto a
+/* Below 1100px the nav can't hold one row: the brand lockup (264px), links
+   (538px), CTA (189px), gaps and padding need ~1087px. So the links wrap onto a
    second row. Every link stays visible — no hamburger at this size. */
-@media (max-width: 1139px) {
+@media (max-width: 1099px) {
   .sui-nav__inner {
     flex-wrap: wrap;
     row-gap: 0;

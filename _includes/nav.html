@@ -17,12 +17,13 @@
       The link's accessible name comes from that text.
     {%- endcomment -%}
     <a class="brand" href="{{ '/' | relative_url }}">
-      <img class="brand__mark" src="{{ '/assets/img/logo-mark.webp' | relative_url }}"
-           width="240" height="709" alt="">
-      <span class="brand__text">
+      <span class="brand__logo">
+        <img class="brand__mark" src="{{ '/assets/img/logo-mark.webp' | relative_url }}"
+             width="240" height="709" alt="">
         <span class="brand__name">Srishti</span>
-        <span class="brand__strap">Women's Health and Maternity Hospital</span>
       </span>
+      <span class="brand__rule" aria-hidden="true"></span>
+      <span class="brand__strap">Women's Health and<br>Maternity Hospital</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
       <span class="nav-toggle__bars" aria-hidden="true"></span>
