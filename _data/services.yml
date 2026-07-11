@@ -1,0 +1,11 @@
+# The footer's "Services" column.
+- label: 24/7 Maternity and Emergency Delivery
+  url: /maternity.html#emergency-delivery
+- label: Normal Delivery and Caesarean Section
+  url: /maternity.html#delivery
+- label: High-Risk Pregnancy Care
+  url: /maternity.html#high-risk
+- label: Women's and Gynaecology Services
+  url: /womens-health.html
+- label: Ultrasound and Doppler Scanning
+  url: /diagnostics.html#ultrasound

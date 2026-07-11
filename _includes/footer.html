@@ -1,0 +1,41 @@
+<footer class="sui-footer">
+  <div class="sui-footer__inner">
+    <div class="sui-footer__grid">
+      <div class="sui-footer__brand">
+        <img src="{{ '/assets/img/logo-reversed.webp' | relative_url }}" width="800" height="356"
+             alt="Srishti — Women's Health and Maternity Hospital"
+             style="height: 56px; width: auto; display: block">
+        <p>A complete neighbourhood hospital for women and mothers — doctor-led care with hospital facilities under one roof.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          {%- for item in site.data.services %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="{{ site.contact.maps_url | escape }}">{{ site.contact.street | escape }}</a></li>
+          <li><a href="{{ site.contact.maps_url | escape }}">{{ site.contact.locality }}, {{ site.contact.city }} {{ site.contact.postcode }}</a></li>
+          <li>{{ site.contact.hours }}</li>
+          <li><a href="https://wa.me/{{ site.contact.phone_e164 }}">WhatsApp {{ site.contact.phone_display }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          {%- for item in site.data.nav %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="sui-footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} Srishti Women's Health and Maternity Hospital</span>
+      <span>{{ site.tagline }}</span>
+    </div>
+  </div>
+</footer>

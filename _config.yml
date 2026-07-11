@@ -1,0 +1,53 @@
+# Srishti Women's Health and Maternity Hospital — Jekyll config.
+# GitHub Pages builds this natively; only whitelisted plugins may be used.
+
+title: Srishti Women's Health and Maternity Hospital
+description: >-
+  A complete neighbourhood hospital for women and mothers in Kismatpur,
+  Hyderabad — doctor-led care with ultrasound, diagnostics, pathology lab,
+  operation theater, surgical ICU and inpatient care under one roof.
+tagline: Your own doctor. A complete hospital. Right in your neighbourhood.
+
+# Used for canonical URLs, Open Graph and sitemap.xml. If this is ever served
+# from a project page (user.github.io/repo) rather than the apex domain, set
+# baseurl to "/repo" — every internal link goes through `relative_url`, so
+# nothing else needs to change.
+url: "https://srishtiwomenshospital.com"
+baseurl: ""
+lang: en
+
+# Single source of truth: every phone/WhatsApp/address on the site reads these,
+# so the number cannot drift out of sync across pages.
+# Values are stored raw (unescaped) — templates pipe them through `escape` for
+# HTML and `jsonify` for the structured data.
+contact:
+  phone_display: "+91 96421 10707"
+  phone_e164: "919642110707"
+  street: "Plot No 54 & 59, Near Vivekanandha Statue"
+  locality: "Bharath Nagar Colony, Kismatpur, Rajendranagar"
+  city: "Hyderabad"
+  region: "Telangana"
+  postcode: "500030"
+  country: "IN"
+  hours: "Open all days · 7am – 10pm"
+  opens: "07:00"
+  closes: "22:00"
+  maps_url: "https://www.google.com/maps/search/?api=1&query=Srishti%20Womens%20Health%20and%20Maternity%20Hospital%2C%20Bharath%20Nagar%20Colony%2C%20Kismatpur%2C%20Rajendranagar%2C%20Hyderabad%20500030"
+
+plugins:
+  - jekyll-sitemap
+
+# `_ds_bundle.css` is the design system's compiled stylesheet, vendored under its
+# upstream name. Jekyll skips underscore-prefixed files by default, so it must be
+# force-included or the whole site would render unstyled.
+include:
+  - assets/ds/_ds_bundle.css
+
+exclude:
+  - design-source
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .jekyll-cache

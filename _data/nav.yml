@@ -1,0 +1,14 @@
+# The primary navigation. Drives both the navbar and the footer's "Pages"
+# column, so the two can never disagree.
+- label: Home
+  url: /
+- label: Women's Health
+  url: /womens-health.html
+- label: Maternity
+  url: /maternity.html
+- label: Diagnostics
+  url: /diagnostics.html
+- label: Facilities
+  url: /facilities.html
+- label: Contact
+  url: /contact.html

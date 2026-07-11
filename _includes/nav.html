@@ -1,0 +1,27 @@
+{%- comment -%}
+  The booking CTA points at the form itself on the Contact page, and at the
+  Contact page everywhere else.
+{%- endcomment -%}
+{%- if page.url == '/contact.html' -%}
+  {%- assign book_url = '#book' -%}
+{%- else -%}
+  {%- assign book_url = '/contact.html#book' | relative_url -%}
+{%- endif -%}
+<nav class="sui-nav">
+  <div class="sui-nav__inner">
+    <a href="{{ '/' | relative_url }}" aria-label="Srishti home">
+      <img src="{{ '/assets/img/logo-full.webp' | relative_url }}" width="800" height="356"
+           alt="Srishti — Women's Health and Maternity Hospital"
+           style="height: 40px; width: auto; display: block">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+    </button>
+    <ul class="sui-nav__links" id="nav-menu">
+      {%- for item in site.data.nav %}
+      <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {%- endfor %}
+    </ul>
+    <a class="sui-btn sui-btn--primary sui-btn--sm sui-nav__cta" href="{{ book_url }}">Book an Appointment</a>
+  </div>
+</nav>

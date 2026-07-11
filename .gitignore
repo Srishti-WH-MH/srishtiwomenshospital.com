@@ -1,2 +1,12 @@
 design-source
 design-source/*
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+vendor/
+
+# Bundler local config
+.bundle/

@@ -1,0 +1,47 @@
+---
+layout: default
+title: "Page not found — Srishti Women's Health and Maternity Hospital"
+description: >-
+  That page could not be found. Find maternity care, women's health,
+  diagnostics, facilities and contact details for Srishti in Kismatpur, Hyderabad.
+permalink: /404.html
+sitemap: false
+noindex: true
+---
+
+  <header class="sui-hero">
+    <div class="sui-hero__inner">
+      <div>
+        <p class="sui-eyebrow">Page not found</p>
+        <h1 class="sui-display">That page isn't here — but we are</h1>
+        <p class="sui-lead">The page you were looking for may have moved. You can start again from the beginning, or reach us directly — we're open all days, 7am to 10pm, and round the clock for maternity emergencies.</p>
+        <div class="sui-hero__actions">
+          <a class="sui-btn sui-btn--primary" href="{{ '/' | relative_url }}">Back to Home</a>
+          <a class="sui-btn sui-btn--secondary" href="{{ '/contact.html#book' | relative_url }}">Book an Appointment</a>
+        </div>
+      </div>
+      <div class="sui-hero__mark">
+        <img src="{{ '/assets/img/logo-mark.webp' | relative_url }}" width="240" height="709" alt=""
+             style="height: 380px; width: auto; display: block">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="pages-heading">
+      <div class="section__intro">
+        <p class="sui-eyebrow sui-eyebrow--rose">Where would you like to go?</p>
+        <h2 class="sui-h1 u-mb-0" id="pages-heading">Every page on the site</h2>
+      </div>
+      <div class="card-grid">
+        {%- for item in site.data.nav %}{% unless item.url == '/' %}
+        <article class="sui-card">
+          <h3 class="sui-card__title">{{ item.label }}</h3>
+          <div class="sui-card__body card-body">
+            <a class="card-link" href="{{ item.url | relative_url }}">Go to {{ item.label }} →</a>
+          </div>
+        </article>
+        {%- endunless %}{% endfor %}
+      </div>
+    </section>
+  </main>

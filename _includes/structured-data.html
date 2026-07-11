@@ -1,0 +1,39 @@
+{%- comment -%}
+  MedicalClinic schema. States only what the site itself claims — opening hours
+  are the OPD hours; the 24/7 line covers maternity emergencies only, so it is
+  not asserted as general opening hours.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": {{ site.title | jsonify }},
+  "url": {{ site.url | append: site.baseurl | append: '/' | jsonify }},
+  "logo": {{ '/assets/img/logo-full.webp' | absolute_url | jsonify }},
+  "image": {{ '/assets/img/logo-full.webp' | absolute_url | jsonify }},
+  "description": {{ site.description | strip | jsonify }},
+  "slogan": {{ site.tagline | jsonify }},
+  "telephone": {{ site.contact.phone_display | jsonify }},
+  "medicalSpecialty": ["ObstetricsAndGynecology", "Obstetric", "Gynecologic"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ site.contact.street | append: ', ' | append: site.contact.locality | jsonify }},
+    "addressLocality": {{ site.contact.city | jsonify }},
+    "addressRegion": {{ site.contact.region | jsonify }},
+    "postalCode": {{ site.contact.postcode | jsonify }},
+    "addressCountry": {{ site.contact.country | jsonify }}
+  },
+  "hasMap": {{ site.contact.maps_url | jsonify }},
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": {{ site.contact.opens | jsonify }},
+    "closes": {{ site.contact.closes | jsonify }}
+  }],
+  "availableService": [
+    {%- for item in site.data.services %}
+    { "@type": "MedicalProcedure", "name": {{ item.label | jsonify }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>
