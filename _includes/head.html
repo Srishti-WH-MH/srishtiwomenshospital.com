@@ -24,6 +24,15 @@
 
 <link rel="stylesheet" href="{{ '/assets/ds/styles.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/css/site.css' | relative_url }}">
+{%- if page.hero_photo %}
+{%- comment -%}
+  The hero photo is the LCP element. A CSS background isn't discovered until the
+  stylesheet has parsed, so preload it — matching the same breakpoint the CSS
+  uses, or the browser would fetch both crops.
+{%- endcomment %}
+<link rel="preload" as="image" href="{{ '/assets/img/hero-wide-1600.webp' | relative_url }}" media="(min-width: 900px)">
+<link rel="preload" as="image" href="{{ '/assets/img/hero-tall-700.webp' | relative_url }}" media="(max-width: 899px)">
+{%- endif %}
 
 {%- comment -%}
   Set before first paint: the hamburger CSS is gated on `html.js`, so deferring

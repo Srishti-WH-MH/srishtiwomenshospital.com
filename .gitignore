@@ -10,3 +10,6 @@ vendor/
 
 # Bundler local config
 .bundle/
+
+# macOS
+.DS_Store

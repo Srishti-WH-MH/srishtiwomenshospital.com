@@ -130,6 +130,82 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .sui-footer a { color: var(--plum-200); }
 .sui-footer a:hover { color: var(--srishti-ivory); }
 
+/* ---- Hero photo -----------------------------------------------------------
+   A plum duotone photograph behind the hero. It is decorative — the copy carries
+   the message — so it lives in a pseudo-element rather than an <img>, and is
+   never announced to screen readers.
+
+   The scrim is part of the same background stack, painted OVER the photo, so the
+   headline keeps its contrast against ivory rather than depending on the image.
+   Desktop scrims left-to-right (subject sits right); mobile scrims top-to-bottom
+   (subject sits below the copy). */
+.sui-hero--photo { position: relative; overflow: hidden; }
+.sui-hero--photo::before { display: none; }   /* the DS rose glow, redundant here */
+.sui-hero--photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sui-hero--photo .sui-hero__inner { position: relative; z-index: 1; }
+.sui-hero--photo .sui-hero__mark { display: none; }
+
+/* Phone: copy on ivory, photo fading in beneath it. The extra bottom padding is
+   what gives her room to appear below the buttons. */
+@media (max-width: 899px) {
+  .sui-hero--photo { padding-bottom: 280px; }
+  .sui-hero--photo::after {
+    background-image:
+      linear-gradient(to bottom,
+        var(--srishti-ivory) 0%,
+        var(--srishti-ivory) 40%,
+        rgba(251, 245, 243, 0.86) 56%,
+        rgba(251, 245, 243, 0.30) 80%,
+        rgba(251, 245, 243, 0) 100%),
+      url('../assets/img/hero-tall-700.webp');
+    background-position: center bottom;
+  }
+}
+@media (max-width: 899px) and (min-resolution: 2dppx) {
+  .sui-hero--photo::after {
+    background-image:
+      linear-gradient(to bottom,
+        var(--srishti-ivory) 0%,
+        var(--srishti-ivory) 40%,
+        rgba(251, 245, 243, 0.86) 56%,
+        rgba(251, 245, 243, 0.30) 80%,
+        rgba(251, 245, 243, 0) 100%),
+      url('../assets/img/hero-tall-1000.webp');
+  }
+}
+
+/* Desktop: subject on the right, copy on an ivory field to the left. */
+@media (min-width: 900px) {
+  .sui-hero--photo::after {
+    background-image:
+      linear-gradient(95deg,
+        var(--srishti-ivory) 30%,
+        rgba(251, 245, 243, 0.88) 48%,
+        rgba(251, 245, 243, 0.30) 74%,
+        rgba(251, 245, 243, 0) 100%),
+      url('../assets/img/hero-wide-1600.webp');
+    background-position: center right;
+  }
+}
+@media (min-width: 1600px), (min-width: 900px) and (min-resolution: 2dppx) {
+  .sui-hero--photo::after {
+    background-image:
+      linear-gradient(95deg,
+        var(--srishti-ivory) 30%,
+        rgba(251, 245, 243, 0.88) 48%,
+        rgba(251, 245, 243, 0.30) 74%,
+        rgba(251, 245, 243, 0) 100%),
+      url('../assets/img/hero-wide-2400.webp');
+  }
+}
+
 /* ---- Brand lockup ---------------------------------------------------------
    Flame mark (image) + wordmark and strapline as live text. Colours sampled
    from the logo artwork: both the wordmark (#4f1d47) and the strapline
