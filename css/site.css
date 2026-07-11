@@ -95,6 +95,34 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
   letter-spacing: 0.08em; text-transform: uppercase;
   text-align: center; max-width: 22ch; line-height: 1.6;
 }
+.slot--photo {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: var(--neutral-100);
+}
+.slot--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slot__disclosure {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(53, 17, 48, 0.78);
+  color: var(--srishti-ivory);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
 /* Heights come from the prototypes, which size each slot to its section. */
 .slot--h320 { height: 320px; }
 .slot--h340 { height: 340px; }

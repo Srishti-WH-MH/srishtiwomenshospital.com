@@ -2,9 +2,11 @@
 
 ## Photography
 
-The home-page hero is an AI-generated hospital scene created specifically for this
-website. The people shown are fictional and must not be presented as real patients,
-doctors, staff members, or endorsers of Srishti.
+The home-page hero and the representative photographs used throughout the site are
+AI-generated scenes created specifically for this website. The people shown are
+fictional and are not patients, doctors, staff members, or endorsers of Srishti.
+Facility and exterior scenes illustrate the type of environment or capability being
+described; they are not documentary photographs of the exact Srishti building or rooms.
 
 ## Design system
 
