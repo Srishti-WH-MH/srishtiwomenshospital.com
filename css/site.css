@@ -130,6 +130,43 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .sui-footer a { color: var(--plum-200); }
 .sui-footer a:hover { color: var(--srishti-ivory); }
 
+/* ---- Brand lockup ---------------------------------------------------------
+   Flame mark (image) + wordmark and strapline as live text. Colours sampled
+   from the logo artwork: both the wordmark (#4f1d47) and the strapline
+   (#502747) are --plum-700. */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+}
+.brand__mark { height: 44px; width: auto; display: block; }
+.brand__text { display: flex; flex-direction: column; gap: 3px; }
+.brand__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.625rem;
+  line-height: 1;
+  color: var(--plum-700);
+}
+.brand__strap {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--plum-700);
+  white-space: nowrap;
+}
+.brand:hover .brand__name { color: var(--srishti-plum-vivid); }
+
+/* On a phone the strapline would push the bar past the viewport; the mark and
+   wordmark carry the brand, and the hero states the descriptor immediately. */
+@media (max-width: 479px) {
+  .brand__strap { display: none; }
+}
+
 /* ---- Navbar: hamburger below 900px ----------------------------------------
    The button only exists for JS users (`html.js`); without JS the links fall
    back to wrapping onto their own row, so navigation is never unreachable. */
@@ -170,9 +207,10 @@ a:not(.sui-btn):hover { color: var(--plum-900); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { top: 0; transform: rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { top: 0; transform: rotate(-45deg); }
 
-/* Tablet (768–900px): the full nav needs ~912px in one row, so the links wrap
-   onto a second row. Every link stays visible — no hamburger at this size. */
-@media (max-width: 900px) {
+/* Below 1140px the nav can't hold one row: the brand lockup (312px), links
+   (538px), CTA (189px), gaps and padding need ~1135px. So the links wrap onto a
+   second row. Every link stays visible — no hamburger at this size. */
+@media (max-width: 1139px) {
   .sui-nav__inner {
     flex-wrap: wrap;
     row-gap: 0;

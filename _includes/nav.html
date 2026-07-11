@@ -9,10 +9,20 @@
 {%- endif -%}
 <nav class="sui-nav">
   <div class="sui-nav__inner">
-    <a href="{{ '/' | relative_url }}" aria-label="Srishti home">
-      <img src="{{ '/assets/img/logo-full.webp' | relative_url }}" width="800" height="356"
-           alt="Srishti — Women's Health and Maternity Hospital"
-           style="height: 40px; width: auto; display: block">
+    {%- comment -%}
+      The stacked lockup's strapline is only 8.4% of its height, so at any size
+      that fits a 72px bar it renders ~3px tall and unreadable. The mark is used
+      as the image and the wording is set as live text in the brand fonts —
+      legible, and crawlable rather than trapped in an alt attribute.
+      The link's accessible name comes from that text.
+    {%- endcomment -%}
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img class="brand__mark" src="{{ '/assets/img/logo-mark.webp' | relative_url }}"
+           width="240" height="709" alt="">
+      <span class="brand__text">
+        <span class="brand__name">Srishti</span>
+        <span class="brand__strap">Women's Health and Maternity Hospital</span>
+      </span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
       <span class="nav-toggle__bars" aria-hidden="true"></span>
